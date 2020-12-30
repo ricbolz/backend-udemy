@@ -22,23 +22,13 @@ toSave.map(obj => {
 
 */
 var filter = {
-    where: {}, // kind of like mySQL where Clause
-    order: 'date ASC', // Order by: "field direction"
+    where: {
+        name: 'Rico'
+    }, // kind of like mySQL where Clause
+    order: 'id ASC', // Order by: "field direction"
     limit: 3,
-    include: {
-        relation: 'Posts',
-        scope: {
-            limit: 5,
-            order: 'date DESC',
-            include: {
-                relation: 'Image',
-                limit: 1,
-                where: {type: 'thumbnail'}
-            }
-        }
-    }
 }
 
-models.Profile.find({where: {name: 'Rico'}, order:'id DESC'}, (err,found) => {
+models.Profile.find(filter, (err,found) => {
     console.log("Found?", err, found);
 })
