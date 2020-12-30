@@ -24,7 +24,6 @@ toSave.map(obj => {
 var filter = {
     where: {
         email: {like: 'rico'},
-        postCount : {gte: 10} //gte = greater than
     }, // kind of like mySQL where Clause
     order: 'id ASC', // Order by: "field direction"
     limit: 10,
@@ -34,6 +33,6 @@ var filter = {
     }
 }
 
-models.Profile.find(filter, (err,found) => {
+models.Profile.findById("5fec7087bba589488cf72848", (err,found) => {
     console.log("Found?", err, found);
 })
