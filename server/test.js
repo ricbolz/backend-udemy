@@ -23,10 +23,15 @@ toSave.map(obj => {
 */
 var filter = {
     where: {
-        email: {like: 'rico'}
+        email: {like: 'rico'},
+        postCount : {gte: 10} //gte = greater than
     }, // kind of like mySQL where Clause
     order: 'id ASC', // Order by: "field direction"
-    limit: 10
+    limit: 10,
+    skip: 0, //skip first value of skip 
+    fields: {
+        email: true
+    }
 }
 
 models.Profile.find(filter, (err,found) => {
