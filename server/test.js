@@ -5,11 +5,10 @@ models.Profile.findOrCreate({name: 'Rico1'}, (err, profile) => {
         console.log("There was an error".err);
     }
     else if(profile){
-        profile.updateAttributes({
-            email:"rico@rico.com"
-        },(updateError, updated) => {
-            console.log("Saved?", updateError,updated);
-        });
+        profile.email = 'rico@rico2.com';
+        profile.save((ue,updated) => {
+            console.log("Updated?", updated)
+        })
     }
-    console.log("data?", err, profile);
+    
 })
